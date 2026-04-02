@@ -1,0 +1,56 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ExamReady.ViewModels"
+        xmlns:views="using:ExamReady.Views"
+        x:Class="ExamReady.Views.MainWindow"
+        Title="Exam-Ready - Question Bank &amp; Generator"
+        Width="1000" Height="700"
+        MinWidth="800" MinHeight="600"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="15,8"/>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style Selector="ComboBox">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Styles>
+
+    <DockPanel>
+        <!-- Menu Bar -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Click="OnExitClick"/>
+            </MenuItem>
+            <MenuItem Header="_Manage">
+                <MenuItem Header="_Questions" Click="OnQuestionsClick"/>
+            </MenuItem>
+            <MenuItem Header="_Generate">
+                <MenuItem Header="_Generate Exam" Click="OnGenerateExamClick"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Click="OnAboutClick"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Status Bar -->
+        <Border DockPanel.Dock="Bottom" Background="#2B2B2B" Padding="5">
+            <TextBlock x:Name="StatusText" Text="Ready"/>
+        </Border>
+
+        <!-- Tab Control for MDI-like behavior -->
+        <TabControl x:Name="MainTabs" Margin="10">
+            <TabItem Header="Questions">
+                <views:QuestionView/>
+            </TabItem>
+            <TabItem Header="Generate Exam">
+                <views:ExamGeneratorView/>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
